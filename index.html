@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editor</title>
+    <script type="text/javascript" src="model.js"></script>
+    <script type="text/javascript" src="view.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+</head>  
+<body>
+<p>In the model there are list of technologies listed in various streams.</p>
+<textarea style="height: 100px;width: 300px;" id="technologies"></textarea>
+<p>When you add an item,if it's among the listed ones then will be displayed in their specific stream array or else in others array</p>
+<p>When you remove an item, if it's among the one that's in the list, then it removes or else give's you an alert</p>
+<br>
+Your favourite technologies:<br>
+<textarea style="height: 100px;width: 150px;" id="data"></textarea>
+<button id="add">  Add an item  </button>
+<button id="remove">  Remove an item  </button>
+</body>
+<script>
+window.addEventListener('load', () => {
+  const model = new ListModel({}),
+    view = new ListView(model, {
+      'technologies':document.getElementById('technologies'),
+      'list':document.getElementById('data'),
+      'addButton' : document.getElementById('add'), 
+      'removeButton':document.getElementById('remove')
+    }),
+    controller = new ListController(model, view);
+  view.show();
+});
+</script>
+</html>
